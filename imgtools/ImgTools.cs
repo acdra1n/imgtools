@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using imgtools.IPC;
+using imgtools.Scripting;
 
 namespace imgtools
 {
@@ -188,6 +189,20 @@ namespace imgtools
                 case "ipc":
                     IPCServer ipcs = new IPCServer();
                     ipcs.StartThreadedProc();
+                    break;
+                case "runscript":
+                    if(args.Length < 2)
+                    {
+                        Error("No script file specified.");
+                        return;
+                    }
+                    else if(!File.Exists(args[1]))
+                    {
+                        Error("Cannot locate file.");
+                        return;
+                    }
+                    IMTParser ip = new IMTParser(args[1]);
+                    
                     break;
                 case "info":
                     if (!CheckCmdLine(args)) return;

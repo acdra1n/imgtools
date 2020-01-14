@@ -7,4 +7,5 @@ Commands:
   removealpha <image> - removes all transparency of an image.
   replacecolor <image> <color> <new_color> [--ignoreAlpha] - replaces all occurences of <color> (hex format) with <new_color> of an image.
   resize <image> <width> <height> - resizes an image.
+  runscript <path> - run an imgtools script.
   grayscale <image> - transform <image> to grayscale.

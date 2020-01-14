@@ -88,5 +88,10 @@ namespace imgtools.Util
                 }
             }
         }
+
+        public static void AlphaBlend_Multiply(Color a, Color b)
+        {
+
+        }
     }
 }
