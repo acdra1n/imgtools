@@ -153,6 +153,37 @@ namespace imgtools
                     Console.WriteLine("Operation completed in {0}ms", sw.ElapsedMilliseconds);
                     sw.Stop();
                     break;
+                case "replacecolor":
+                    if (!CheckCmdLine(args)) return;
+
+                    Console.WriteLine("Transforming image...");
+                    sw.Start();
+                    bmp = new Bitmap(Image.FromFile(args[1]));
+
+                    Color a;
+                    Color b;
+                    bool ignoreAlpha = false;
+
+                    try
+                    {
+                        a = new HexColorParser(args[2]).ToColor();
+                        b = new HexColorParser(args[3]).ToColor();
+                    }
+                    catch (Exception)
+                    {
+                        Error("Cannot parse hex string.");
+                        return;
+                    }
+
+                    if ((args.Length > 4) && (args[4] == "--ignoreAlpha"))
+                        ignoreAlpha = true;
+
+                    bmp.ReplaceColor(a, b, ignoreAlpha);
+
+                    bmp.Save("output.png");
+                    Console.WriteLine("Operation completed in {0}ms", sw.ElapsedMilliseconds);
+                    sw.Stop();
+                    break;
                 case "info":
                     if (!CheckCmdLine(args)) return;
                     bmp = new Bitmap(Image.FromFile(args[1]));

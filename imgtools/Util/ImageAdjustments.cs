@@ -61,6 +61,22 @@ namespace imgtools.Util
             }
         }
 
+        public static void ReplaceColor(this Bitmap bmp, Color a, Color b, bool ignoreAlpha = false)
+        {
+            for (var x = 0; x < bmp.Width; x++)
+            {
+                for (var y = 0; y < bmp.Height; y++)
+                {
+                    Color oc = bmp.GetPixel(x, y);
+                    if((oc.R == a.R) && (oc.G == a.G) && (oc.B == a.B))
+                    {
+                        if ((!ignoreAlpha) && (oc.A != a.A)) continue;
+                        bmp.SetPixel(x, y, b);
+                    }
+                }
+            }
+        }
+
         public static void RemoveAlpha(this Bitmap bmp)
         {
             for (var x = 0; x < bmp.Width; x++)
