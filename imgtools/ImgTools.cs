@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using imgtools.IPC;
 
 namespace imgtools
 {
@@ -183,6 +184,10 @@ namespace imgtools
                     bmp.Save("output.png");
                     Console.WriteLine("Operation completed in {0}ms", sw.ElapsedMilliseconds);
                     sw.Stop();
+                    break;
+                case "ipc":
+                    IPCServer ipcs = new IPCServer();
+                    ipcs.StartThreadedProc();
                     break;
                 case "info":
                     if (!CheckCmdLine(args)) return;
