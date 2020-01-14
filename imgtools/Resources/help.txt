@@ -1,0 +1,8 @@
+Usage: imgtools <command> [arguments]
+Commands:
+  brightness <image> <percentage> - changes the brightness of an image.
+  info <image> - retrieves information about an image.
+  invert <image> - inverts the colors of an image.
+  parsehex <hex_color> - reveals the values of a hex color string.
+  resize <image> <width> <height> - resizes an image.
+  grayscale <image> - transform <image> to grayscale.
