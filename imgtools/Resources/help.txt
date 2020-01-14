@@ -4,5 +4,6 @@ Commands:
   info <image> - retrieves information about an image.
   invert <image> - inverts the colors of an image.
   parsehex <hex_color> - reveals the values of a hex color string.
+  removealpha <image> - removes all transparency of an image.
   resize <image> <width> <height> - resizes an image.
   grayscale <image> - transform <image> to grayscale.

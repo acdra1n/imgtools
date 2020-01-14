@@ -60,5 +60,17 @@ namespace imgtools.Util
                 }
             }
         }
+
+        public static void RemoveAlpha(this Bitmap bmp)
+        {
+            for (var x = 0; x < bmp.Width; x++)
+            {
+                for (var y = 0; y < bmp.Height; y++)
+                {
+                    Color oc = bmp.GetPixel(x, y);
+                    bmp.SetPixel(x, y, Color.FromArgb(255, oc.R, oc.G, oc.B));
+                }
+            }
+        }
     }
 }

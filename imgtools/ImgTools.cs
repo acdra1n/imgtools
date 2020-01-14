@@ -143,6 +143,16 @@ namespace imgtools
                         Error("Cannot parse hex string.");
                     }
                     break;
+                case "removealpha":
+                    if (!CheckCmdLine(args)) return;
+                    Console.WriteLine("Transforming image...");
+                    sw.Start();
+                    bmp = new Bitmap(Image.FromFile(args[1]));
+                    bmp.RemoveAlpha();
+                    bmp.Save("output.png");
+                    Console.WriteLine("Operation completed in {0}ms", sw.ElapsedMilliseconds);
+                    sw.Stop();
+                    break;
                 case "info":
                     if (!CheckCmdLine(args)) return;
                     bmp = new Bitmap(Image.FromFile(args[1]));
