@@ -51,6 +51,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Scripting\IMTFunction.cs" />
+    <Compile Include="Scripting\IMTLinkedFunctionCallback.cs" />
+    <Compile Include="Scripting\IMTParser.cs" />
+    <Compile Include="Scripting\IMTPrimitiveDataType.cs" />
+    <Compile Include="Scripting\IMTScriptingException.cs" />
     <Compile Include="Util\HexColorParser.cs" />
     <Compile Include="Util\ImageAdjustments.cs" />
   </ItemGroup>
