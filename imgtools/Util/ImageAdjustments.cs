@@ -89,9 +89,14 @@ namespace imgtools.Util
             }
         }
 
+        public static void ExecuteAlgorithm(this Bitmap bmp, string algorithmName, params object[] args)
+        {
+            
+        }
+
         public static void AlphaBlend_Multiply(Color a, Color b)
         {
-
+            
         }
     }
 }

@@ -15,7 +15,7 @@ namespace imgtools
 {
     class ImgTools
     {
-        static void Error(string text, params object[] o)
+        public static void Error(string text, params object[] o)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(text, o);
