@@ -1,4 +1,5 @@
-﻿using System;
+﻿using imgtools.Plugin;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -89,9 +90,14 @@ namespace imgtools.Util
             }
         }
 
-        public static void ExecuteAlgorithm(this Bitmap bmp, string algorithmName, params object[] args)
+        public static bool ExecuteAlgorithm(this Bitmap bmp, string algorithmName, params object[] args)
         {
-            
+            if(!IPAlgorithmManager.algorithms.ContainsKey(algorithmName))
+            {
+                ImgTools.Error("Error: cannot find algorithm with name '{0}'", algorithmName);
+                return false;
+            }
+            return IPAlgorithmManager.algorithms[algorithmName].Execute(bmp, args);
         }
 
         public static void AlphaBlend_Multiply(Color a, Color b)

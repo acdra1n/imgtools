@@ -20,7 +20,7 @@ namespace imgtools.Plugin
                 foreach (var type in Assembly.LoadFile(binaryPath).GetTypes())
                 {
                     if ((!type.IsClass) || type.IsNotPublic) continue;
-                    if (type.IsAssignableFrom(typeof(ProcessingAlgorithm)))
+                    if (typeof(ProcessingAlgorithm).IsAssignableFrom(type))
                     {
                         try
                         {
@@ -52,7 +52,7 @@ namespace imgtools.Plugin
             {
                 if(!silent) Console.WriteLine("Loading algorithms from binary '{0}'...", algorithmFPath);
                 int c = LoadAlgorithmsFromFile(algorithmFPath, silent);
-                if (!silent) Console.WriteLine("Successfully loaded '{0}' algorithms.", c);
+                if (!silent) Console.WriteLine("Successfully loaded {0} algorithms.", c);
             }
         }
     }

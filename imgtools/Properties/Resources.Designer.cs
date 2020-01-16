@@ -61,16 +61,50 @@ namespace imgtools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///Usage: imgtools &lt;command&gt; [arguments]
+        ///   Looks up a localized string similar to Usage: imgtools &lt;command&gt; [arguments]
         ///Commands:
-        ///	adjust &lt;subcommand&gt; &lt;image&gt; [args]
-        ///		where &lt;subcommand&gt; : grayscale
-        ///		&lt;image&gt; : path to the image you wish to adjust..
+        ///  brightness &lt;image&gt; &lt;percentage&gt; - changes the brightness of an image.
+        ///  info &lt;image&gt; - retrieves information about an image.
+        ///  invert &lt;image&gt; - inverts the colors of an image.
+        ///  parsehex &lt;hex_color&gt; - reveals the values of a hex color string.
+        ///  removealpha &lt;image&gt; - removes all transparency of an image.
+        ///  replacecolor &lt;image&gt; &lt;color&gt; &lt;new_color&gt; [--ignoreAlpha] - replaces all occurences of &lt;color&gt; (hex format) with &lt;new_color&gt; of an image.
+        ///  resize &lt; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string help {
             get {
                 return ResourceManager.GetString("help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to using static imgtools.Plugin.Stdlib;
+        ///using System.Drawing;
+        ///
+        ///public class TestAlgorithm : ProcessingAlgorithm {
+        ///	public override bool Execute(Bitmap image, params object[] args) {
+        ///		int height = image.Height;
+        ///		int width = image.Width;
+        ///		
+        ///		Color GetPx(int x, int y) {
+        ///			return image.GetPixel(x, y);
+        ///		}
+        ///		
+        ///		Color SetPx(int x, int y, Color c) {
+        ///			return image.SetPixel(x, y, c);
+        ///		}
+        ///		
+        ///		%ALGORITHM_CODE%
+        ///		return true;
+        ///	}
+        ///	
+        ///	public override float GetVersion() {
+        ///		return &quot;%VERSION%&quot;;
+        ///	}        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string imtalgorithm_template {
+            get {
+                return ResourceManager.GetString("imtalgorithm_template", resourceCulture);
             }
         }
     }

@@ -1,0 +1,31 @@
+using System.Drawing;
+
+public class IMC_Auto_%NAME% : imgtools.Plugin.ProcessingAlgorithm {
+	Bitmap bmp;
+	
+	Color GetPx(int x, int y) {
+		return bmp.GetPixel(x, y);
+	}
+	
+	void SetPx(int x, int y, Color c) {
+		bmp.SetPixel(x, y, c);
+	}
+	
+	public override bool Execute(Bitmap image, params object[] args) {
+		this.bmp = image;
+		int height = bmp.Height;
+		int width = bmp.Width;
+		
+		%CODE%
+		
+		return true;
+	}
+	
+	public override float GetVersion() {
+		return %VERSION%;
+	}
+	
+	public override string GetName() {
+		return "%NAME%";
+	}
+}

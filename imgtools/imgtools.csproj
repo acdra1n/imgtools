@@ -49,6 +49,7 @@
     <Compile Include="Plugin\IMTAlgorithmCompiler.cs" />
     <Compile Include="Plugin\IPAlgorithmManager.cs" />
     <Compile Include="Plugin\ProcessingAlgorithm.cs" />
+    <Compile Include="Plugin\Stdlib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -76,6 +77,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\help.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imtalgorithm_template.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

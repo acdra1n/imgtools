@@ -146,7 +146,7 @@ namespace imgtools
                         Error("Cannot parse hex string.");
                     }
                     break;
-                case "lsalgorithms":
+                case "ls-algorithms":
                     if (!Directory.Exists(Environment.CurrentDirectory + "\\algorithms"))
                         Directory.CreateDirectory(Environment.CurrentDirectory + "\\algorithms");
                     IPAlgorithmManager.LoadAllAlgorithms(Environment.CurrentDirectory + "\\algorithms");
@@ -157,12 +157,26 @@ namespace imgtools
                     {
                         foreach (var algorithm in IPAlgorithmManager.algorithms)
                         {
-                            Console.WriteLine(algorithm.Value.GetName());
+                            Console.WriteLine("  {0}", algorithm.Value.GetName());
                         }
                     }
                     break;
                 case "build-algorithm":
-                    
+                    if (!CheckCmdLine(args)) return;
+                    Console.WriteLine("Compiling...");
+                    IMTAlgorithmCompiler.CompileAlgorithm(args[1]);
+                    Console.WriteLine("Compilation finished.");
+                    break;
+                case "run-algorithm":
+                    if (!CheckCmdLine(args)) return;
+                    string algorithmName = args[2];
+                    IPAlgorithmManager.LoadAllAlgorithms(Environment.CurrentDirectory + "\\algorithms");
+                    sw.Start();
+                    bmp = new Bitmap(Image.FromFile(args[1]));
+                    if(!bmp.ExecuteAlgorithm(algorithmName, args)) return;
+                    bmp.Save("output.png");
+                    Console.WriteLine("Operation completed in {0}ms", sw.ElapsedMilliseconds);
+                    sw.Stop();
                     break;
                 case "removealpha":
                     if (!CheckCmdLine(args)) return;
