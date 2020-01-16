@@ -1,5 +1,5 @@
 Usage: imgtools <command> [arguments]
-Commands:
+General Commands:
   brightness <image> <percentage> - changes the brightness of an image.
   info <image> - retrieves information about an image.
   invert <image> - inverts the colors of an image.
@@ -9,3 +9,8 @@ Commands:
   resize <image> <width> <height> - resizes an image.
   runscript <path> - run an imgtools script.
   grayscale <image> - transform <image> to grayscale.
+
+Advanced Commands:
+  build-algorithm <source_path> - builds an algorithm from source and places it in `(cdir)/algorithms` on successful build.
+  ls-algorithms - lists all available installed algorithms in `(cdir)/algorithms`.
+  run-algorithm <algorithm_name> <image> - runs a compiled algorithm on <image>.

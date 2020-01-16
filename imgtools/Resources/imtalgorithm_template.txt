@@ -1,4 +1,5 @@
 using System.Drawing;
+using System;
 
 public class IMC_Auto_%NAME% : imgtools.Plugin.ProcessingAlgorithm {
 	Bitmap bmp;
@@ -6,6 +7,11 @@ public class IMC_Auto_%NAME% : imgtools.Plugin.ProcessingAlgorithm {
 	Color GetPx(int x, int y) {
 		return bmp.GetPixel(x, y);
 	}
+
+	void Print(string text, params object[] args)
+    {
+        Console.WriteLine(text, args);
+    }
 	
 	void SetPx(int x, int y, Color c) {
 		bmp.SetPixel(x, y, c);

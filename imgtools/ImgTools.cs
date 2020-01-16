@@ -23,7 +23,7 @@ namespace imgtools
             Console.ResetColor();
         }
 
-        static bool CheckCmdLine(string[] args)
+        static bool CheckCmdLine(string[] args, int c = 1)
         {
             if (args.Length < 2)
             {
@@ -31,9 +31,9 @@ namespace imgtools
                 return false;
             }
 
-            if (!File.Exists(args[1]))
+            if (!File.Exists(args[c]))
             {
-                Error("Error: cannot find file '{0}'.", args[1]);
+                Error("Error: cannot find file '{0}'.", args[c]);
                 return false;
             }
             return true;
@@ -53,7 +53,7 @@ namespace imgtools
             }
 
             Bitmap bmp;
-
+            //TODO improve command management - this is a POC for now.
             switch(args[0])
             {
                 case "grayscale":
@@ -168,11 +168,21 @@ namespace imgtools
                     Console.WriteLine("Compilation finished.");
                     break;
                 case "run-algorithm":
-                    if (!CheckCmdLine(args)) return;
-                    string algorithmName = args[2];
-                    IPAlgorithmManager.LoadAllAlgorithms(Environment.CurrentDirectory + "\\algorithms");
+                    if (!CheckCmdLine(args, 2)) return;
+                    if(args.Length < 3)
+                    {
+                        Error("Invalid arguments.");
+                        return;
+                    }
+                    string algorithmName = args[1];
+                    if(!File.Exists(Environment.CurrentDirectory + "\\algorithms\\" + algorithmName + ".dll"))
+                    {
+                        Error("Algorithm does not exist.");
+                        return;
+                    }
+                    IPAlgorithmManager.LoadAlgorithmsFromFile(Environment.CurrentDirectory + "\\algorithms\\" + algorithmName + ".dll");
                     sw.Start();
-                    bmp = new Bitmap(Image.FromFile(args[1]));
+                    bmp = new Bitmap(Image.FromFile(args[2]));
                     if(!bmp.ExecuteAlgorithm(algorithmName, args)) return;
                     bmp.Save("output.png");
                     Console.WriteLine("Operation completed in {0}ms", sw.ElapsedMilliseconds);
