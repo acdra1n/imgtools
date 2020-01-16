@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="ImgTools.cs" />
     <Compile Include="IPC\IPCServer.cs" />
+    <Compile Include="Plugin\IMTAlgorithmCompiler.cs" />
     <Compile Include="Plugin\IPAlgorithmManager.cs" />
     <Compile Include="Plugin\ProcessingAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

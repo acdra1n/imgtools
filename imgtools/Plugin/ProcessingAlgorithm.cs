@@ -11,5 +11,6 @@ namespace imgtools.Plugin
     {
         public abstract bool Execute(Bitmap image, params object[] args);
         public abstract string GetName();
+        public abstract float GetVersion();
     }
 }

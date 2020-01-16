@@ -12,7 +12,7 @@ namespace imgtools.Plugin
     {
         public static Dictionary<string, ProcessingAlgorithm> algorithms = new Dictionary<string, ProcessingAlgorithm>();
 
-        public static int LoadAlgorithmsFromFile(string binaryPath)
+        public static int LoadAlgorithmsFromFile(string binaryPath, bool silent = false)
         {
             int count = 0;
             try
@@ -33,7 +33,7 @@ namespace imgtools.Plugin
                         }
                         catch (Exception)
                         {
-                            ImgTools.Error("Error: failed to instantiate algorithm '{0}' in file '{1}'!", type.Name, binaryPath);
+                            if (!silent) ImgTools.Error("Error: failed to instantiate algorithm '{0}' in file '{1}'!", type.Name, binaryPath);
                             continue;
                         }
                     }
@@ -41,18 +41,18 @@ namespace imgtools.Plugin
             }
             catch (Exception)
             {
-                ImgTools.Error("Error: cannot load algorithms from file '{0}'!", binaryPath);
+                if (!silent) ImgTools.Error("Error: cannot load algorithms from file '{0}'!", binaryPath);
             }
             return count;
         }
 
-        public static void LoadAllAlgorithms(string binsPath)
+        public static void LoadAllAlgorithms(string binsPath, bool silent = false)
         {
-            foreach(var algorithmFPath in Directory.GetFiles(binsPath))
+            foreach(var algorithmFPath in Directory.GetFiles(binsPath, "*.dll", SearchOption.AllDirectories))
             {
-                Console.WriteLine("Loading algorithms from binary '{0}'...", algorithmFPath);
-                int c = LoadAlgorithmsFromFile(algorithmFPath);
-                Console.WriteLine("Successfully loaded '{0}' algorithms.", c);
+                if(!silent) Console.WriteLine("Loading algorithms from binary '{0}'...", algorithmFPath);
+                int c = LoadAlgorithmsFromFile(algorithmFPath, silent);
+                if (!silent) Console.WriteLine("Successfully loaded '{0}' algorithms.", c);
             }
         }
     }

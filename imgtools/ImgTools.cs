@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using imgtools.IPC;
 using imgtools.Scripting;
+using imgtools.Plugin;
 
 namespace imgtools
 {
@@ -144,6 +145,24 @@ namespace imgtools
                     {
                         Error("Cannot parse hex string.");
                     }
+                    break;
+                case "lsalgorithms":
+                    if (!Directory.Exists(Environment.CurrentDirectory + "\\algorithms"))
+                        Directory.CreateDirectory(Environment.CurrentDirectory + "\\algorithms");
+                    IPAlgorithmManager.LoadAllAlgorithms(Environment.CurrentDirectory + "\\algorithms");
+                    Console.WriteLine("Installed Algorithms:");
+                    if (IPAlgorithmManager.algorithms.Count < 1)
+                        Console.WriteLine("  (none found)");
+                    else
+                    {
+                        foreach (var algorithm in IPAlgorithmManager.algorithms)
+                        {
+                            Console.WriteLine(algorithm.Value.GetName());
+                        }
+                    }
+                    break;
+                case "build-algorithm":
+                    
                     break;
                 case "removealpha":
                     if (!CheckCmdLine(args)) return;
