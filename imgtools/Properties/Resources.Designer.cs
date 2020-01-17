@@ -62,14 +62,14 @@ namespace imgtools.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Usage: imgtools &lt;command&gt; [arguments]
-        ///Commands:
+        ///General Commands:
         ///  brightness &lt;image&gt; &lt;percentage&gt; - changes the brightness of an image.
         ///  info &lt;image&gt; - retrieves information about an image.
         ///  invert &lt;image&gt; - inverts the colors of an image.
         ///  parsehex &lt;hex_color&gt; - reveals the values of a hex color string.
         ///  removealpha &lt;image&gt; - removes all transparency of an image.
         ///  replacecolor &lt;image&gt; &lt;color&gt; &lt;new_color&gt; [--ignoreAlpha] - replaces all occurences of &lt;color&gt; (hex format) with &lt;new_color&gt; of an image.
-        ///  resize &lt; [rest of string was truncated]&quot;;.
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string help {
             get {
@@ -78,33 +78,43 @@ namespace imgtools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to using static imgtools.Plugin.Stdlib;
-        ///using System.Drawing;
+        ///   Looks up a localized string similar to using System.Drawing;
+        ///using System;
         ///
-        ///public class TestAlgorithm : ProcessingAlgorithm {
-        ///	public override bool Execute(Bitmap image, params object[] args) {
-        ///		int height = image.Height;
-        ///		int width = image.Width;
-        ///		
-        ///		Color GetPx(int x, int y) {
-        ///			return image.GetPixel(x, y);
-        ///		}
-        ///		
-        ///		Color SetPx(int x, int y, Color c) {
-        ///			return image.SetPixel(x, y, c);
-        ///		}
-        ///		
-        ///		%ALGORITHM_CODE%
-        ///		return true;
+        ///public class IMC_Auto_%NAME% : imgtools.Plugin.ProcessingAlgorithm {
+        ///	Bitmap bmp;
+        ///	
+        ///	Color GetPx(int x, int y) {
+        ///		return bmp.GetPixel(x, y);
+        ///	}
+        ///
+        ///	void Print(string text, params object[] args)
+        ///    {
+        ///        Console.WriteLine(text, args);
+        ///    }
+        ///	
+        ///	void SetPx(int x, int y, Color c) {
+        ///		bmp.SetPixel(x, y, c);
         ///	}
         ///	
-        ///	public override float GetVersion() {
-        ///		return &quot;%VERSION%&quot;;
-        ///	}        /// [rest of string was truncated]&quot;;.
+        ///	public override bool Execute(Bitmap image, params object[] args) {
+        ///		this.bmp = image;
+        ///		int height = bmp.Height;
+        ///		int width = bmp.Width;        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string imtalgorithm_template {
             get {
                 return ResourceManager.GetString("imtalgorithm_template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Libraries Used:
+        ///	.NET Standard PNG Library: https://github.com/EliotJones/BigGustave.
+        /// </summary>
+        internal static string libraries {
+            get {
+                return ResourceManager.GetString("libraries", resourceCulture);
             }
         }
     }

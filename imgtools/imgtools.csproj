@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -44,6 +46,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Image.cs" />
+    <Compile Include="Core\ImageHandler.cs" />
+    <Compile Include="Core\Color.cs" />
+    <Compile Include="Core\ImageHandlers\FallbackImageHandler.cs" />
+    <Compile Include="Core\ImageHandlers\PngImageHandler.cs" />
+    <Compile Include="Core\Size.cs" />
+    <Compile Include="Core\Formats\PNG\Adam7.cs" />
+    <Compile Include="Core\Formats\PNG\Adler32Checksum.cs" />
+    <Compile Include="Core\Formats\PNG\ChunkHeader.cs" />
+    <Compile Include="Core\Formats\PNG\ColorType.cs" />
+    <Compile Include="Core\Formats\PNG\CompressionMethod.cs" />
+    <Compile Include="Core\Formats\PNG\Crc32.cs" />
+    <Compile Include="Core\Formats\PNG\Decoder.cs" />
+    <Compile Include="Core\Formats\PNG\FilterMethod.cs" />
+    <Compile Include="Core\Formats\PNG\FilterType.cs" />
+    <Compile Include="Core\Formats\PNG\HeaderValidationResult.cs" />
+    <Compile Include="Core\Formats\PNG\IChunkVisitor.cs" />
+    <Compile Include="Core\Formats\PNG\ImageHeader.cs" />
+    <Compile Include="Core\Formats\PNG\InterlaceMethod.cs" />
+    <Compile Include="Core\Formats\PNG\Palette.cs" />
+    <Compile Include="Core\Formats\PNG\Pixel.cs" />
+    <Compile Include="Core\Formats\PNG\Png.cs" />
+    <Compile Include="Core\Formats\PNG\PngBuilder.cs" />
+    <Compile Include="Core\Formats\PNG\PngOpener.cs" />
+    <Compile Include="Core\Formats\PNG\PngStreamWriteHelper.cs" />
+    <Compile Include="Core\Formats\PNG\RawPngData.cs" />
+    <Compile Include="Core\Formats\PNG\StreamHelper.cs" />
     <Compile Include="ImgTools.cs" />
     <Compile Include="IPC\IPCServer.cs" />
     <Compile Include="Plugin\IMTAlgorithmCompiler.cs" />
@@ -80,6 +109,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\imtalgorithm_template.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\libraries.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

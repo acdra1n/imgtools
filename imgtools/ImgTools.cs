@@ -41,6 +41,7 @@ namespace imgtools
 
         static void Main(string[] args)
         {
+            
             Stopwatch sw = new Stopwatch();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("ImageTools v1.0. (C) vreman.me 2020. All rights reserved.\n");

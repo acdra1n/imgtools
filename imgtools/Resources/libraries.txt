@@ -1,0 +1,2 @@
+Libraries Used:
+	.NET Standard PNG Library: https://github.com/EliotJones/BigGustave
