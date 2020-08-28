@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Imgtools")]
 [assembly: AssemblyDescription("Small suite to transform/modify images")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("vreman.me")]
+[assembly: AssemblyCompany("acdra1n")]
 [assembly: AssemblyProduct("imgtools")]
-[assembly: AssemblyCopyright("Copyright © vreman.me 2020")]
+[assembly: AssemblyCopyright("Copyright © acdra1n 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
